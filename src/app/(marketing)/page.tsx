@@ -12,10 +12,10 @@ export default function LandingPage() {
         <div className="font-bold text-xl tracking-tight">uptime.guard</div>
         
         {/* Center Nav Links */}
-        <div className="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400">
-          <Link href="#features" className="hover:text-white transition-colors">Features</Link>
-          <Link href="#pricing" className="hover:text-white transition-colors">Pricing</Link>
-          <Link href="#contact" className="hover:text-white transition-colors">Contact</Link>
+        <div className="hidden md:flex items-center gap-2 text-base font-medium text-zinc-400">
+          <Link href="#features" className="hover:text-white px-3 py-1.5 rounded-md hover:bg-white/5 transition-all">Features</Link>
+          <Link href="#pricing" className="hover:text-white px-3 py-1.5 rounded-md hover:bg-white/5 transition-all">Pricing</Link>
+          <Link href="#contact" className="hover:text-white px-3 py-1.5 rounded-md hover:bg-white/5 transition-all">Contact</Link>
         </div>
 
         <Link href="/login" className="rounded-full bg-white px-4 py-1.5 text-sm font-bold text-black hover:bg-zinc-200 transition-colors flex items-center gap-2">
@@ -24,17 +24,26 @@ export default function LandingPage() {
       </nav>
 
       {/* Hero */}
-      <main className="max-w-[1200px] mx-auto px-6 pt-20 pb-16">
+      <main className="max-w-[1200px] mx-auto px-6 pt-16 pb-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <div>
             <h1 className="text-[40px] md:text-[56px] font-bold leading-[1.1] tracking-tight mb-6">
               Forget manual<br/>checks,<br/>Datadog &<br/>PagerDuty
             </h1>
-            <p className="text-zinc-400 text-lg mb-12 max-w-md leading-relaxed">
-              uptime.guard is your new uptime monitor, 
-              incident responder & public status page.
-              Simple. Fast. Secure.
+            <p className="text-zinc-400 text-lg md:text-xl mb-8 max-w-lg leading-relaxed">
+              Monitor your website every 5 minutes.<br/>
+              Get instant alerts when downtime happens.<br/>
+              Create public status pages in seconds.
             </p>
+
+            <div className="flex flex-col sm:flex-row items-center gap-4 mb-12">
+              <Link href="/register" className="w-full sm:w-auto text-center rounded-lg bg-white px-6 py-3 text-sm font-bold text-black hover:bg-zinc-200 transition-colors">
+                Start Monitoring Free
+              </Link>
+              <Link href="/status/demo" className="w-full sm:w-auto text-center rounded-lg border border-zinc-800 bg-[#0a0a0a] px-6 py-3 text-sm font-bold text-white hover:bg-zinc-900 transition-colors">
+                View Demo Status Page
+              </Link>
+            </div>
 
             <div className="flex items-center gap-4 font-mono text-[10px] text-zinc-600 uppercase tracking-widest mt-12 border-t border-zinc-900 pt-6 inline-flex">
               <span className="flex items-center gap-2">
@@ -121,11 +130,11 @@ export default function LandingPage() {
       <div className="max-w-[1200px] mx-auto px-6">
         
         {/* Section: Dashboard */}
-        <div id="features" className="mt-24">
-          <div className="flex flex-col lg:flex-row items-center justify-between mb-24">
+        <div id="features" className="mt-20">
+          <div className="flex flex-col lg:flex-row items-center justify-between mb-16">
             <div className="lg:w-1/3 mb-12 lg:mb-0 z-10">
-              <h2 className="text-3xl md:text-[40px] font-bold mb-4 tracking-tight">Create amazing status pages<br/>No skills required</h2>
-              <p className="text-zinc-400 leading-relaxed">
+              <h2 className="text-3xl md:text-[40px] font-bold mb-4 tracking-tight">Create amazing status pages<br/>Set up monitoring in under 2 minutes.</h2>
+              <p className="text-zinc-400 text-lg leading-relaxed">
                 The simple but powerful engine supports everything from 5-minute checks to incident reporting and custom domains.
               </p>
             </div>
@@ -200,7 +209,7 @@ export default function LandingPage() {
                 <h3 className="font-bold text-sm">Global ping network</h3>
               </div>
               <p className="text-zinc-500 text-sm leading-relaxed">
-                Checks are distributed globally to ensure your site is up for everyone, everywhere.
+                Monitor availability from multiple global regions.
               </p>
             </div>
             <div className="bg-[#050505] border border-zinc-900/80 p-8 rounded-2xl hover:border-zinc-700 transition-colors shadow-2xl">
@@ -211,7 +220,7 @@ export default function LandingPage() {
                 <h3 className="font-bold text-sm">Instant email alerts</h3>
               </div>
               <p className="text-zinc-500 text-sm leading-relaxed">
-                The moment a site goes down, an alert hits your inbox so you can act fast.
+                Get notified within seconds when downtime occurs.
               </p>
             </div>
             <div className="bg-[#050505] border border-zinc-900/80 p-8 rounded-2xl hover:border-zinc-700 transition-colors shadow-2xl">
@@ -233,7 +242,7 @@ export default function LandingPage() {
                 <h3 className="font-bold text-sm">Zero false positives</h3>
               </div>
               <p className="text-zinc-500 text-sm leading-relaxed">
-                We require 3 consecutive failed pings before triggering an alert. No more noise.
+                Alerts trigger only after 3 consecutive failures.
               </p>
             </div>
             <div className="bg-[#050505] border border-zinc-900/80 p-8 rounded-2xl hover:border-zinc-700 transition-colors shadow-2xl">
@@ -250,7 +259,7 @@ export default function LandingPage() {
           </div>
 
           {/* Security section */}
-          <div className="mt-32 flex flex-col items-center text-center relative overflow-hidden py-16">
+          <div className="mt-20 flex flex-col items-center text-center relative overflow-hidden py-16">
             <div className="absolute inset-0 flex items-center justify-center -z-10 opacity-20">
                {/* Concentric circles */}
                <div className="h-[600px] w-[600px] rounded-full border border-zinc-700 absolute" />
@@ -262,7 +271,7 @@ export default function LandingPage() {
                <div className="w-[800px] h-[1px] bg-zinc-700 absolute" />
             </div>
 
-            <h2 className="text-3xl font-bold mb-2 tracking-tight">Built for reliability</h2>
+            <h2 className="text-3xl font-bold mb-2 tracking-tight">3 failed checks required before alerts.<br/>Zero false positives.</h2>
             <p className="text-zinc-500 text-sm mb-12">Designed to stay up when everything else goes down.</p>
 
             <div className="space-y-4 text-sm text-left relative z-10 bg-black/50 p-6 rounded-2xl backdrop-blur-sm border border-zinc-800/50">
@@ -285,11 +294,11 @@ export default function LandingPage() {
           </div>
 
         {/* Section: Email Alerts */}
-        <div className="mt-24">
-          <div className="flex flex-col lg:flex-row items-center justify-between mb-24">
+        <div className="mt-20">
+          <div className="flex flex-col lg:flex-row items-center justify-between mb-16">
             <div className="lg:w-1/3 mb-12 lg:mb-0 z-10 lg:order-2">
-              <h2 className="text-3xl md:text-[40px] font-bold mb-4 tracking-tight">Alerts you will enjoy<br/>Yes, really</h2>
-              <p className="text-zinc-400 leading-relaxed">
+              <h2 className="text-3xl md:text-[40px] font-bold mb-4 tracking-tight">Get notified before your<br/>users notice downtime.</h2>
+              <p className="text-zinc-400 text-lg leading-relaxed">
                 The first alert compatible messenger: ordered by sender, not individual emails. With clean, minimal UI. Never get distracted again.
               </p>
             </div>
@@ -333,82 +342,12 @@ export default function LandingPage() {
           </div>
         </div>
 
-          {/* 3x2 Feature Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="bg-[#050505] border border-zinc-900/80 p-8 rounded-2xl hover:border-zinc-700 transition-colors shadow-2xl">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 rounded-lg bg-zinc-900 border border-zinc-800">
-                  <Zap className="h-4 w-4 text-white" />
-                </div>
-                <h3 className="font-bold text-sm">Ridiculously fast</h3>
-              </div>
-              <p className="text-zinc-500 text-sm leading-relaxed">
-                Alerts load on average 2x faster than in other major clients. No more waiting.
-              </p>
-            </div>
-            <div className="bg-[#050505] border border-zinc-900/80 p-8 rounded-2xl hover:border-zinc-700 transition-colors shadow-2xl">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 rounded-lg bg-zinc-900 border border-zinc-800">
-                  <Globe className="h-4 w-4 text-white" />
-                </div>
-                <h3 className="font-bold text-sm">Global ping network</h3>
-              </div>
-              <p className="text-zinc-500 text-sm leading-relaxed">
-                Checks are distributed globally to ensure your site is up for everyone, everywhere.
-              </p>
-            </div>
-            <div className="bg-[#050505] border border-zinc-900/80 p-8 rounded-2xl hover:border-zinc-700 transition-colors shadow-2xl">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 rounded-lg bg-zinc-900 border border-zinc-800">
-                  <ArrowRight className="h-4 w-4 text-white" />
-                </div>
-                <h3 className="font-bold text-sm">Instant email alerts</h3>
-              </div>
-              <p className="text-zinc-500 text-sm leading-relaxed">
-                The moment a site goes down, an alert hits your inbox so you can act fast.
-              </p>
-            </div>
-            <div className="bg-[#050505] border border-zinc-900/80 p-8 rounded-2xl hover:border-zinc-700 transition-colors shadow-2xl">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 rounded-lg bg-zinc-900 border border-zinc-800">
-                  <Lock className="h-4 w-4 text-white" />
-                </div>
-                <h3 className="font-bold text-sm">Bring your own SMTP</h3>
-              </div>
-              <p className="text-zinc-500 text-sm leading-relaxed">
-                Connect Postmark, SendGrid, or your personal email to route alerts your way.
-              </p>
-            </div>
-            <div className="bg-[#050505] border border-zinc-900/80 p-8 rounded-2xl hover:border-zinc-700 transition-colors shadow-2xl">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 rounded-lg bg-zinc-900 border border-zinc-800">
-                  <Shield className="h-4 w-4 text-white" />
-                </div>
-                <h3 className="font-bold text-sm">Zero false positives</h3>
-              </div>
-              <p className="text-zinc-500 text-sm leading-relaxed">
-                We require 3 consecutive failed pings before triggering an alert. No more noise.
-              </p>
-            </div>
-            <div className="bg-[#050505] border border-zinc-900/80 p-8 rounded-2xl hover:border-zinc-700 transition-colors shadow-2xl">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 rounded-lg bg-zinc-900 border border-zinc-800">
-                  <Search className="h-4 w-4 text-white" />
-                </div>
-                <h3 className="font-bold text-sm">Beautiful status pages</h3>
-              </div>
-              <p className="text-zinc-500 text-sm leading-relaxed">
-                Automatically generate public status pages to build transparency with users.
-              </p>
-            </div>
-          </div>
-
         {/* Section: Pricing & Footer */}
-        <div id="pricing" className="mt-32 mb-24">
-          <h2 className="text-3xl font-bold mb-2 tracking-tight">Free, forever</h2>
-          <p className="text-zinc-500 text-sm mb-12">You can upgrade for unlimited monitors, but the core is free.</p>
+        <div id="pricing" className="mt-20 mb-20 text-center">
+          <h2 className="text-3xl font-bold mb-2 tracking-tight">Free forever</h2>
+          <p className="text-zinc-400 text-base mb-12">Monitor up to 10 websites with unlimited alerts at no cost.</p>
 
-          <div className="max-w-sm mx-auto bg-[#050505] border border-zinc-900/80 rounded-2xl p-8 relative shadow-2xl">
+          <div className="max-w-md mx-auto bg-[#050505] border-2 border-zinc-800 rounded-2xl p-8 relative shadow-2xl">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
             <div className="flex items-baseline gap-2 mb-8 justify-center">
               <span className="text-5xl font-bold tracking-tight">$0</span>
@@ -444,8 +383,12 @@ export default function LandingPage() {
         </div>
 
         {/* Section: Contact */}
-        <div id="contact" className="mt-24 mb-12 max-w-md mx-auto text-center w-full">
-          <h2 className="text-2xl font-bold mb-8 tracking-tight">Contact</h2>
+        <div id="contact" className="mt-20 mb-12 max-w-md mx-auto text-center w-full">
+          <h2 className="text-2xl font-bold mb-2 tracking-tight">Questions?</h2>
+          <p className="text-zinc-400 text-sm mb-8">
+            Need help setting up monitoring or have feedback?<br/>
+            Send us a message and we'll get back to you.
+          </p>
 
           <form action="https://directform.vercel.app/f/ab4d95b9-dcd2-4a28-a5ed-825590885cd5" method="POST" className="flex flex-col gap-4 text-left bg-[#050505] border border-zinc-900/80 p-8 rounded-2xl shadow-2xl">
             <div>
