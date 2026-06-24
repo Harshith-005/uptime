@@ -15,6 +15,7 @@ export default function LandingPage() {
         <div className="hidden md:flex items-center gap-2 text-base font-medium text-zinc-400">
           <Link href="#features" className="hover:text-white px-3 py-1.5 rounded-md hover:bg-white/5 transition-all">Features</Link>
           <Link href="#pricing" className="hover:text-white px-3 py-1.5 rounded-md hover:bg-white/5 transition-all">Pricing</Link>
+          <Link href="/docs" className="hover:text-white px-3 py-1.5 rounded-md hover:bg-white/5 transition-all">Docs</Link>
           <Link href="#contact" className="hover:text-white px-3 py-1.5 rounded-md hover:bg-white/5 transition-all">Contact</Link>
         </div>
 
