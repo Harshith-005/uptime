@@ -11,9 +11,21 @@ jobs:
     steps:
       - name: Run uptime checks
         run: |
-          curl -s -o /dev/null -w "%{http_code}" \
-          -X POST ${{ secrets.APP_URL }}/api/cron/monitor \
-          -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
-          -H "Content-Type: application/json"
-      - name: Log completion
-        run: echo "Monitor run completed at $(date)"
+          echo "Hitting URL: ${{ secrets.APP_URL }}/api/cron/monitor"
+          RESPONSE=$(curl -s -w "\n%{http_code}" \
+            -X POST "${{ secrets.APP_URL }}/api/cron/monitor" \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            -H "Content-Type: application/json")
+          
+          HTTP_CODE=$(echo "$RESPONSE" | tail -1)
+          BODY=$(echo "$RESPONSE" | head -n -1)
+          
+          echo "HTTP Status: $HTTP_CODE"
+          echo "Response Body: $BODY"
+          
+          if [ "$HTTP_CODE" -ne 200 ]; then
+            echo "ERROR: API returned status $HTTP_CODE"
+            exit 1
+          fi
+          
+          echo "Monitor run completed successfully at $(date)"
