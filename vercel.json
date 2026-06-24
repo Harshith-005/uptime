@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "src/app/api/cron/monitor/route.ts": {
+      "maxDuration": 60
+    }
+  }
+}
