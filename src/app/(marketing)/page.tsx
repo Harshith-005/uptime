@@ -57,70 +57,107 @@ export default function LandingPage() {
             </div>
           </div>
 
-          <div className="lg:mt-8 relative flex justify-center lg:justify-end">
+          <div className="lg:mt-8 relative flex justify-center lg:justify-end w-full">
             <style>{`
-              @keyframes float-stack {
-                0%, 100% { transform: translateY(0) rotateX(60deg) rotateZ(-45deg); }
-                50% { transform: translateY(-20px) rotateX(60deg) rotateZ(-45deg); }
+              @keyframes subtle-float {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(-5px); }
               }
             `}</style>
             
-            <div className="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px]" style={{ perspective: '1200px' }}>
-              {/* Background Glow */}
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,197,94,0.15)_0%,transparent_50%)] -z-10 blur-2xl" />
-              
-              {/* The 3D Stack */}
-              <div 
-                className="relative w-full h-full" 
-                style={{ 
-                  transformStyle: 'preserve-3d', 
-                  animation: 'float-stack 6s ease-in-out infinite' 
-                }}
-              >
-                {/* Bottom Blade (Database) */}
-                <div 
-                  className="absolute inset-16 bg-[#050505] border border-zinc-800 rounded-xl"
-                  style={{ transform: 'translateZ(-60px)', boxShadow: '20px 20px 0px rgba(0,0,0,0.8)' }}
-                >
-                   <div className="absolute right-4 bottom-4 w-2 h-2 rounded-full bg-[#22c55e] animate-pulse" style={{ animationDelay: '0ms'}} />
-                   <div className="absolute left-4 bottom-4 text-[10px] text-zinc-600 font-mono">DB-PRIMARY</div>
+            <div 
+              className="relative w-full max-w-[500px] rounded-xl border border-zinc-800/80 bg-[#050505] shadow-[0_0_80px_rgba(34,197,94,0.1)] flex flex-col overflow-hidden"
+              style={{ animation: 'subtle-float 8s ease-in-out infinite' }}
+            >
+              {/* Header (Mac window style) */}
+              <div className="flex items-center px-4 py-3 border-b border-zinc-800/80 bg-[#0a0a0a]">
+                <div className="flex gap-1.5 mr-4">
+                  <div className="w-2.5 h-2.5 rounded-full bg-zinc-700" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-zinc-700" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-zinc-700" />
+                </div>
+                <div className="text-xs font-medium text-zinc-500 font-mono flex items-center gap-2">
+                  <Shield className="h-3 w-3" />
+                  Dashboard / Overview
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="p-5 flex flex-col gap-4">
+                
+                {/* Top Metrics Row */}
+                <div className="grid grid-cols-3 gap-3">
+                  <div className="rounded-lg border border-zinc-800/50 bg-[#0a0a0a] p-3">
+                    <div className="text-[10px] text-zinc-500 font-medium mb-1">UPTIME</div>
+                    <div className="flex items-end justify-between">
+                      <div className="text-lg font-bold text-white">99.99%</div>
+                      <div className="w-8 h-4 flex items-end gap-0.5">
+                        <div className="w-1.5 h-2 bg-[#22c55e]/40 rounded-sm" />
+                        <div className="w-1.5 h-3 bg-[#22c55e]/60 rounded-sm" />
+                        <div className="w-1.5 h-4 bg-[#22c55e] rounded-sm" />
+                        <div className="w-1.5 h-4 bg-[#22c55e] rounded-sm" />
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="rounded-lg border border-zinc-800/50 bg-[#0a0a0a] p-3">
+                    <div className="text-[10px] text-zinc-500 font-medium mb-1">AVG LATENCY</div>
+                    <div className="flex items-end justify-between">
+                      <div className="text-lg font-bold text-white">89<span className="text-xs text-zinc-500 font-normal">ms</span></div>
+                      <svg className="w-8 h-4 text-zinc-600" viewBox="0 0 24 12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="0,10 5,8 10,12 15,4 20,6 24,2"></polyline>
+                      </svg>
+                    </div>
+                  </div>
+                  
+                  <div className="rounded-lg border border-zinc-800/50 bg-[#0a0a0a] p-3">
+                    <div className="text-[10px] text-zinc-500 font-medium mb-1">INCIDENTS</div>
+                    <div className="flex items-end justify-between">
+                      <div className="text-lg font-bold text-white">2</div>
+                      <div className="text-[10px] font-medium text-zinc-400 bg-zinc-800/50 px-1.5 py-0.5 rounded">This Month</div>
+                    </div>
+                  </div>
                 </div>
 
-                {/* Middle Blade (API) */}
-                <div 
-                  className="absolute inset-16 bg-[#080808] border border-zinc-700/80 rounded-xl backdrop-blur-sm"
-                  style={{ transform: 'translateZ(0px)', boxShadow: '20px 20px 0px rgba(0,0,0,0.6)' }}
-                >
-                   <div className="absolute right-4 bottom-4 w-2 h-2 rounded-full bg-[#22c55e] animate-pulse" style={{ animationDelay: '500ms'}} />
-                   <div className="absolute left-4 bottom-4 text-[10px] text-zinc-500 font-mono">API-GATEWAY</div>
+                {/* Main Monitor List */}
+                <div className="rounded-lg border border-zinc-800/50 bg-[#0a0a0a] overflow-hidden">
+                  <div className="grid grid-cols-[1fr_auto_auto] items-center gap-4 p-3 border-b border-zinc-800/50 hover:bg-white/[0.02] transition-colors">
+                    <div className="flex items-center gap-2">
+                      <Globe className="h-3.5 w-3.5 text-zinc-500" />
+                      <span className="text-xs font-medium text-white">api.company.com</span>
+                    </div>
+                    <div className="text-[10px] text-zinc-500 font-mono">45ms</div>
+                    <div className="flex items-center gap-1.5 bg-[#22c55e]/10 text-[#22c55e] px-2 py-0.5 rounded text-[10px] font-bold">
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#22c55e] animate-pulse" />
+                      UP
+                    </div>
+                  </div>
+                  
+                  <div className="grid grid-cols-[1fr_auto_auto] items-center gap-4 p-3 border-b border-zinc-800/50 hover:bg-white/[0.02] transition-colors">
+                    <div className="flex items-center gap-2">
+                      <Globe className="h-3.5 w-3.5 text-zinc-500" />
+                      <span className="text-xs font-medium text-white">auth.company.com</span>
+                    </div>
+                    <div className="text-[10px] text-zinc-500 font-mono">62ms</div>
+                    <div className="flex items-center gap-1.5 bg-[#22c55e]/10 text-[#22c55e] px-2 py-0.5 rounded text-[10px] font-bold">
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#22c55e] animate-pulse" style={{ animationDelay: '500ms' }} />
+                      UP
+                    </div>
+                  </div>
+                  
+                  <div className="grid grid-cols-[1fr_auto_auto] items-center gap-4 p-3 hover:bg-white/[0.02] transition-colors">
+                    <div className="flex items-center gap-2">
+                      <Globe className="h-3.5 w-3.5 text-zinc-500" />
+                      <span className="text-xs font-medium text-white">payments.company.com</span>
+                    </div>
+                    <div className="text-[10px] text-[#ef4444] font-mono">TIMEOUT</div>
+                    <div className="flex items-center gap-1.5 bg-[#ef4444]/10 text-[#ef4444] px-2 py-0.5 rounded text-[10px] font-bold">
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#ef4444]" />
+                      DOWN
+                    </div>
+                  </div>
                 </div>
 
-                {/* Top Blade (Edge) */}
-                <div 
-                  className="absolute inset-16 bg-[#0a0a0a] border border-zinc-600 rounded-xl backdrop-blur-md flex flex-col justify-between p-6"
-                  style={{ transform: 'translateZ(60px)', boxShadow: '20px 20px 20px rgba(0,0,0,0.5)' }}
-                >
-                   <div className="flex justify-between items-center">
-                     <div className="text-xs text-white font-mono font-bold">EDGE-NODE</div>
-                     <div className="w-2.5 h-2.5 rounded-full bg-[#22c55e] animate-pulse shadow-[0_0_12px_#22c55e]" style={{ animationDelay: '1000ms'}} />
-                   </div>
-                   
-                   <div className="space-y-2 mt-4">
-                     <div className="flex justify-between text-[10px] text-zinc-500 font-mono">
-                       <span>UPTIME</span>
-                       <span className="text-[#22c55e]">99.99%</span>
-                     </div>
-                     <div className="h-1.5 w-full bg-zinc-800 rounded-full overflow-hidden">
-                       <div className="h-full w-[99.9%] bg-[#22c55e]" />
-                     </div>
-                   </div>
-                   
-                   <div className="space-y-1.5 mt-auto">
-                     <div className="h-1.5 w-full bg-zinc-800/50 rounded-full" />
-                     <div className="h-1.5 w-3/4 bg-zinc-800/50 rounded-full" />
-                     <div className="h-1.5 w-1/2 bg-zinc-800/50 rounded-full" />
-                   </div>
-                </div>
               </div>
             </div>
           </div>
