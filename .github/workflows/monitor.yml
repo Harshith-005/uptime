@@ -12,7 +12,7 @@ jobs:
       - name: Run uptime checks
         run: |
           echo "Hitting URL: ${{ secrets.APP_URL }}/api/cron/monitor"
-          RESPONSE=$(curl -s -w "\n%{http_code}" \
+          RESPONSE=$(curl -s -L -w "\n%{http_code}" \
             -X POST "${{ secrets.APP_URL }}/api/cron/monitor" \
             -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
             -H "Content-Type: application/json")
