@@ -15,8 +15,7 @@ export default function LandingPage() {
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400">
           <Link href="#features" className="hover:text-white transition-colors">Features</Link>
           <Link href="#pricing" className="hover:text-white transition-colors">Pricing</Link>
-          <Link href="#docs" className="hover:text-white transition-colors">Documentation</Link>
-          <Link href="#changelog" className="hover:text-white transition-colors">Changelog</Link>
+          <Link href="#contact" className="hover:text-white transition-colors">Contact</Link>
         </div>
 
         <Link href="/login" className="rounded-full bg-white px-4 py-1.5 text-sm font-bold text-black hover:bg-zinc-200 transition-colors flex items-center gap-2">
@@ -122,7 +121,7 @@ export default function LandingPage() {
       <div className="max-w-[1200px] mx-auto px-6">
         
         {/* Section: Dashboard */}
-        <div className="mt-24">
+        <div id="features" className="mt-24">
           <div className="flex flex-col lg:flex-row items-center justify-between mb-24">
             <div className="lg:w-1/3 mb-12 lg:mb-0 z-10">
               <h2 className="text-3xl md:text-[40px] font-bold mb-4 tracking-tight">Create amazing status pages<br/>No skills required</h2>
@@ -405,7 +404,7 @@ export default function LandingPage() {
           </div>
 
         {/* Section: Pricing & Footer */}
-        <div className="mt-32 mb-24">
+        <div id="pricing" className="mt-32 mb-24">
           <h2 className="text-3xl font-bold mb-2 tracking-tight">Free, forever</h2>
           <p className="text-zinc-500 text-sm mb-12">You can upgrade for unlimited monitors, but the core is free.</p>
 
