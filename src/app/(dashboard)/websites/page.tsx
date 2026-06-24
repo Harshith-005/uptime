@@ -64,7 +64,7 @@ export default async function WebsitesPage() {
       />
 
       {allWebsites.length === 0 ? (
-        <div className="flex flex-col items-center justify-center rounded-lg border border-zinc-800 bg-[#18181b] py-16">
+        <div className="flex flex-col items-center justify-center rounded-lg border border-zinc-900/80 bg-[#050505] py-16">
           <Globe className="mb-3 h-10 w-10 text-zinc-600" />
           <p className="text-base font-medium text-white">
             No websites added yet

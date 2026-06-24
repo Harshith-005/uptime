@@ -88,9 +88,9 @@ export function Sidebar() {
   }
 
   return (
-    <aside className="flex h-screen w-[240px] flex-shrink-0 flex-col border-r border-[#27272a] bg-[#0a0a0a]">
+    <aside className="flex h-screen w-[240px] flex-shrink-0 flex-col border-r border-zinc-900/80 bg-[#050505]">
       {/* Logo */}
-      <Link href="/login" className="flex items-center gap-2 px-6 py-5 hover:opacity-80 transition-opacity">
+      <Link href="/" className="flex items-center gap-2 px-6 py-5 hover:opacity-80 transition-opacity">
         <Shield className="h-5 w-5 text-white" strokeWidth={2} />
         <span className="text-lg font-semibold text-white" style={{ fontFamily: "var(--font-geist-sans)" }}>
           UptimeGuard
@@ -98,7 +98,7 @@ export function Sidebar() {
       </Link>
 
       {/* Separator */}
-      <div className="mx-3 h-px bg-zinc-800" />
+      <div className="mx-3 h-px bg-zinc-900/80" />
 
       {/* Navigation */}
       <nav className="flex-1 px-3 py-4">
