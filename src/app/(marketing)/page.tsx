@@ -387,7 +387,7 @@ export default function LandingPage() {
           <h2 className="text-2xl font-bold mb-2 tracking-tight">Questions?</h2>
           <p className="text-zinc-400 text-sm mb-8">
             Need help setting up monitoring or have feedback?<br/>
-            Send us a message and we'll get back to you.
+            Send us a message and we&apos;ll get back to you.
           </p>
 
           <form action="https://directform.vercel.app/f/ab4d95b9-dcd2-4a28-a5ed-825590885cd5" method="POST" className="flex flex-col gap-4 text-left bg-[#050505] border border-zinc-900/80 p-8 rounded-2xl shadow-2xl">
