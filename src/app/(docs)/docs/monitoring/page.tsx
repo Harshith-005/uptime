@@ -20,8 +20,8 @@ export default function DocsMonitoringPage() {
       <ol className="list-decimal list-inside space-y-4 text-zinc-400 mb-10 pl-4">
         <li>Log into your UptimeGuard dashboard.</li>
         <li>Click the <strong className="text-white">Add Website</strong> button in the top right corner.</li>
-        <li>Enter a <strong className="text-white">Name</strong> (e.g., "Production API").</li>
-        <li>Enter the full <strong className="text-white">URL</strong> (e.g., "https://api.company.com/health").</li>
+        <li>Enter a <strong className="text-white">Name</strong> (e.g., &quot;Production API&quot;).</li>
+        <li>Enter the full <strong className="text-white">URL</strong> (e.g., &quot;https://api.company.com/health&quot;).</li>
         <li>Click <strong className="text-white">Save</strong>.</li>
       </ol>
 

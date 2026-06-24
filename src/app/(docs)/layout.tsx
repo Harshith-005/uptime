@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Shield, Book, Server, Activity, ArrowLeft } from "lucide-react";
+import { Book, Server, Activity, ArrowLeft } from "lucide-react";
 
 export default function DocsLayout({ children }: { children: React.ReactNode }) {
   return (
