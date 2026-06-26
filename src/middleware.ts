@@ -8,8 +8,14 @@ const protectedRoutes = ["/dashboard", "/websites", "/incidents", "/settings"];
 const authRoutes = ["/login", "/register"];
 
 export async function middleware(request: NextRequest) {
-  const { supabaseResponse, user } = await updateSession(request);
   const { pathname } = request.nextUrl;
+
+  // Never intercept API routes — they handle their own auth
+  if (pathname.startsWith("/api/")) {
+    return NextResponse.next();
+  }
+
+  const { supabaseResponse, user } = await updateSession(request);
 
   // Check if the current path matches a protected route
   const isProtectedRoute = protectedRoutes.some(
@@ -45,9 +51,9 @@ export const config = {
      * - _next/static (static files)
      * - _next/image (image optimization files)
      * - favicon.ico (favicon file)
-     * - api (API routes — they handle their own auth)
+     * - api/ (API routes — they handle their own auth)
      * - status (public status pages)
      */
-    "/((?!_next/static|_next/image|favicon.ico|api|status|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
+    "/((?!_next/static|_next/image|favicon.ico|api/|status|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
   ],
 };
