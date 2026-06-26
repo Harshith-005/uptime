@@ -33,10 +33,10 @@ function CustomTooltip({
 
   const data = payload[0].payload;
   return (
-    <div className="rounded-md border border-zinc-800 bg-[#18181b] px-3 py-2">
-      <p className="text-xs text-zinc-400">{data.fullTime}</p>
+    <div className="rounded-md border border-[var(--border)] bg-[var(--surface)] px-3 py-2">
+      <p className="text-xs text-[var(--text-muted)]">{data.fullTime}</p>
       <p
-        className="text-sm font-medium text-white"
+        className="text-sm font-medium text-[var(--text-primary)]"
         style={{ fontFamily: "var(--font-geist-mono)" }}
       >
         {data.responseTime != null ? `${data.responseTime}ms` : "—"}
@@ -57,7 +57,7 @@ export function ResponseTimeChart({ logs, status }: ResponseTimeChartProps) {
 
   if (chartData.length === 0) {
     return (
-      <div className="flex h-[200px] items-center justify-center text-sm text-zinc-500">
+      <div className="flex h-[200px] items-center justify-center text-sm text-[var(--text-muted)]">
         No data to display
       </div>
     );
@@ -92,7 +92,7 @@ export function ResponseTimeChart({ logs, status }: ResponseTimeChartProps) {
         />
         <Tooltip
           content={<CustomTooltip />}
-          cursor={{ stroke: "#27272a", strokeDasharray: "3 3" }}
+          cursor={{ stroke: "var(--border)", strokeDasharray: "3 3" }}
         />
         <Area
           type="monotone"

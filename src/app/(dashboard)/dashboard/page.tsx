@@ -107,7 +107,7 @@ export default async function DashboardPage() {
       />
 
       {/* Stat Cards */}
-      <div className="mb-8 grid grid-cols-4 gap-4">
+      <div className="mb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
         <StatCard
           title="Total Monitors"
           value={totalMonitors}
@@ -142,13 +142,13 @@ export default async function DashboardPage() {
 
       {/* All Monitors Table */}
       <div className="mb-10">
-        <h2 className="mb-4 text-lg font-semibold text-white">All Monitors</h2>
+        <h2 className="mb-4 text-lg font-semibold text-[var(--text-primary)]">All Monitors</h2>
 
         {allWebsites.length === 0 ? (
-          <div className="flex flex-col items-center justify-center rounded-lg border border-zinc-900/80 bg-[#050505] py-16">
-            <Globe className="mb-3 h-10 w-10 text-zinc-600" />
-            <p className="text-base font-medium text-white">No monitors yet</p>
-            <p className="mt-1 text-sm text-zinc-500">
+          <div className="flex flex-col items-center justify-center rounded-lg border border-[var(--border)] bg-[var(--surface)] py-16">
+            <Globe className="mb-3 h-10 w-10 text-[var(--text-subtle)]" />
+            <p className="text-base font-medium text-[var(--text-primary)]">No monitors yet</p>
+            <p className="mt-1 text-sm text-[var(--text-muted)]">
               Add your first website to start monitoring
             </p>
             <Button
@@ -159,16 +159,16 @@ export default async function DashboardPage() {
             </Button>
           </div>
         ) : (
-          <div className="rounded-lg border border-zinc-800 bg-[#18181b]">
+          <div className="rounded-lg border border-[var(--border)] bg-[var(--surface)]">
             <Table>
               <TableHeader>
-                <TableRow className="border-zinc-800 hover:bg-transparent">
-                  <TableHead className="text-zinc-500">Name</TableHead>
-                  <TableHead className="text-zinc-500">Status</TableHead>
-                  <TableHead className="text-zinc-500">Uptime</TableHead>
-                  <TableHead className="text-zinc-500">Last Checked</TableHead>
-                  <TableHead className="text-zinc-500">Response Time</TableHead>
-                  <TableHead className="text-right text-zinc-500">
+                <TableRow className="border-[var(--border)] hover:bg-transparent">
+                  <TableHead className="text-[var(--text-muted)]">Name</TableHead>
+                  <TableHead className="text-[var(--text-muted)]">Status</TableHead>
+                  <TableHead className="hidden sm:table-cell text-[var(--text-muted)]">Uptime</TableHead>
+                  <TableHead className="hidden sm:table-cell text-[var(--text-muted)]">Last Checked</TableHead>
+                  <TableHead className="hidden sm:table-cell text-[var(--text-muted)]">Response Time</TableHead>
+                  <TableHead className="text-right text-[var(--text-muted)]">
                     Actions
                   </TableHead>
                 </TableRow>
@@ -177,7 +177,7 @@ export default async function DashboardPage() {
                 {allWebsites.map((website) => (
                   <TableRow
                     key={website.id}
-                    className="border-zinc-800 hover:bg-zinc-900/50"
+                    className="border-[var(--border)] hover:bg-[var(--border)]/30"
                   >
                     {/* Name */}
                     <TableCell>
@@ -185,8 +185,8 @@ export default async function DashboardPage() {
                         href={`/websites/${website.id}`}
                         className="block transition-colors hover:opacity-80"
                       >
-                        <p className="font-medium text-white">{website.name}</p>
-                        <p className="text-xs text-zinc-500">{website.url}</p>
+                        <p className="font-medium text-[var(--text-primary)]">{website.name}</p>
+                        <p className="text-xs text-[var(--text-muted)]">{website.url}</p>
                       </Link>
                     </TableCell>
 
@@ -195,10 +195,10 @@ export default async function DashboardPage() {
                       <StatusBadge status={website.status} />
                     </TableCell>
 
-                    {/* Uptime */}
-                    <TableCell>
+                    {/* Uptime — hidden on mobile */}
+                    <TableCell className="hidden sm:table-cell">
                       <span
-                        className="text-zinc-400"
+                        className="text-[var(--text-muted)]"
                         style={{ fontFamily: "var(--font-geist-mono)" }}
                       >
                         {website.uptime_percentage != null
@@ -207,23 +207,23 @@ export default async function DashboardPage() {
                       </span>
                     </TableCell>
 
-                    {/* Last Checked */}
-                    <TableCell>
+                    {/* Last Checked — hidden on mobile */}
+                    <TableCell className="hidden sm:table-cell">
                       {website.last_checked_at ? (
-                        <span className="text-sm text-zinc-400">
+                        <span className="text-sm text-[var(--text-muted)]">
                           {getRelativeTime(website.last_checked_at)}
                         </span>
                       ) : (
-                        <span className="text-sm text-zinc-600">
+                        <span className="text-sm text-[var(--text-subtle)]">
                           Not yet checked
                         </span>
                       )}
                     </TableCell>
 
-                    {/* Response Time */}
-                    <TableCell>
+                    {/* Response Time — hidden on mobile */}
+                    <TableCell className="hidden sm:table-cell">
                       <span
-                        className="text-zinc-400"
+                        className="text-[var(--text-muted)]"
                         style={{ fontFamily: "var(--font-geist-mono)" }}
                       >
                         {latestLogs[website.id] != null
@@ -239,14 +239,14 @@ export default async function DashboardPage() {
                           href={website.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="rounded-md p-1.5 text-zinc-500 transition-colors hover:text-white"
+                          className="rounded-md p-1.5 text-[var(--text-muted)] transition-colors hover:text-[var(--text-primary)]"
                           aria-label={`Visit ${website.name}`}
                         >
                           <ExternalLink className="h-4 w-4" />
                         </a>
                         <Link
                           href={`/websites/${website.id}/edit`}
-                          className="rounded-md p-1.5 text-zinc-500 transition-colors hover:text-white"
+                          className="rounded-md p-1.5 text-[var(--text-muted)] transition-colors hover:text-[var(--text-primary)]"
                           aria-label={`Edit ${website.name}`}
                         >
                           <Settings className="h-4 w-4" />
@@ -263,22 +263,22 @@ export default async function DashboardPage() {
 
       {/* Recent Incidents */}
       <div>
-        <h2 className="mb-4 text-lg font-semibold text-white">
+        <h2 className="mb-4 text-lg font-semibold text-[var(--text-primary)]">
           Recent Incidents
         </h2>
 
         {recentIncidents.length === 0 ? (
-          <div className="py-6 text-center text-sm text-zinc-500">
+          <div className="py-6 text-center text-sm text-[var(--text-muted)]">
             No incidents recorded
           </div>
         ) : (
-          <div className="rounded-lg border border-zinc-800 bg-[#18181b]">
+          <div className="rounded-lg border border-[var(--border)] bg-[var(--surface)]">
             {recentIncidents.map((incident, index) => (
               <div
                 key={incident.id}
                 className={cn(
                   "flex items-center gap-4 px-4 py-4",
-                  index < recentIncidents.length - 1 && "border-b border-zinc-800"
+                  index < recentIncidents.length - 1 && "border-b border-[var(--border)]"
                 )}
               >
                 {/* Icon */}
@@ -287,22 +287,22 @@ export default async function DashboardPage() {
                     "h-4 w-4 flex-shrink-0",
                     incident.status === "OPEN"
                       ? "text-red-500"
-                      : "text-zinc-500"
+                      : "text-[var(--text-muted)]"
                   )}
                 />
 
                 {/* Website info */}
                 <div className="min-w-0 flex-1">
-                  <p className="text-sm font-medium text-white">
+                  <p className="text-sm font-medium text-[var(--text-primary)]">
                     {incident.websites?.name || "Unknown"}
                   </p>
-                  <p className="truncate text-xs text-zinc-500">
+                  <p className="truncate text-xs text-[var(--text-muted)]">
                     {incident.websites?.url || ""}
                   </p>
                 </div>
 
                 {/* Started at */}
-                <span className="flex-shrink-0 text-sm text-zinc-400">
+                <span className="hidden sm:inline flex-shrink-0 text-sm text-[var(--text-muted)]">
                   {getRelativeTime(incident.started_at)}
                 </span>
 
@@ -314,7 +314,7 @@ export default async function DashboardPage() {
 
                 {/* Duration */}
                 <span
-                  className="w-20 flex-shrink-0 text-right text-sm text-zinc-400"
+                  className="hidden sm:inline w-20 flex-shrink-0 text-right text-sm text-[var(--text-muted)]"
                   style={{ fontFamily: "var(--font-geist-mono)" }}
                 >
                   {incident.status === "RESOLVED" && incident.duration != null

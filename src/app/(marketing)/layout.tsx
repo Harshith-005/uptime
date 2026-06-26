@@ -11,7 +11,7 @@ export default function MarketingLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen scroll-smooth bg-[#0a0a0a] text-zinc-400">
+    <div className="min-h-screen scroll-smooth bg-[var(--background)] text-[var(--text-muted)]">
       {children}
     </div>
   );

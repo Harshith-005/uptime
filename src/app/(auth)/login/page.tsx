@@ -54,7 +54,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="w-full max-w-[400px] rounded-lg border border-[#27272a] bg-[#18181b] p-6">
+    <div className="w-full max-w-[400px] mx-4 sm:mx-auto rounded-lg border border-[var(--border)] bg-[var(--surface)] p-6">
       {/* Logo */}
       <div className="mb-6 flex items-center justify-center gap-2">
         <div className="flex h-8 w-8 items-center justify-center rounded-md bg-white">
@@ -81,19 +81,19 @@ export default function LoginPage() {
             />
           </svg>
         </div>
-        <span className="text-lg font-semibold text-white">UptimeGuard</span>
+        <span className="text-lg font-semibold text-[var(--text-primary)]">UptimeGuard</span>
       </div>
 
       {/* Heading */}
       <div className="mb-6 text-center">
-        <h1 className="text-xl font-semibold text-white">Welcome back</h1>
-        <p className="mt-1 text-sm text-zinc-500">Sign in to your account</p>
+        <h1 className="text-xl font-semibold text-[var(--text-primary)]">Welcome back</h1>
+        <p className="mt-1 text-sm text-[var(--text-muted)]">Sign in to your account</p>
       </div>
 
       {/* Form */}
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <div className="flex flex-col gap-2">
-          <Label htmlFor="email" className="text-sm text-zinc-400">
+          <Label htmlFor="email" className="text-sm text-[var(--text-muted)]">
             Email
           </Label>
           <Input
@@ -103,12 +103,12 @@ export default function LoginPage() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="border-[#27272a] bg-zinc-900 text-white placeholder:text-zinc-600 focus-visible:ring-zinc-600"
+            className="border-[var(--border)] bg-[var(--background)] text-[var(--text-primary)] placeholder:text-[var(--text-subtle)] focus-visible:ring-[var(--text-subtle)]"
           />
         </div>
 
         <div className="flex flex-col gap-2">
-          <Label htmlFor="password" className="text-sm text-zinc-400">
+          <Label htmlFor="password" className="text-sm text-[var(--text-muted)]">
             Password
           </Label>
           <Input
@@ -118,12 +118,12 @@ export default function LoginPage() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            className="border-[#27272a] bg-zinc-900 text-white placeholder:text-zinc-600 focus-visible:ring-zinc-600"
+            className="border-[var(--border)] bg-[var(--background)] text-[var(--text-primary)] placeholder:text-[var(--text-subtle)] focus-visible:ring-[var(--text-subtle)]"
           />
           <div className="flex justify-end">
             <Link
               href="/forgot-password"
-              className="text-xs text-zinc-500 transition-colors hover:text-white"
+              className="text-xs text-[var(--text-muted)] transition-colors hover:text-[var(--text-primary)]"
             >
               Forgot password?
             </Link>
@@ -148,9 +148,9 @@ export default function LoginPage() {
 
       {/* Divider */}
       <div className="my-6 flex items-center gap-3">
-        <div className="h-px flex-1 bg-[#27272a]" />
-        <span className="text-xs text-zinc-500">or</span>
-        <div className="h-px flex-1 bg-[#27272a]" />
+        <div className="h-px flex-1 bg-[var(--border)]" />
+        <span className="text-xs text-[var(--text-muted)]">or</span>
+        <div className="h-px flex-1 bg-[var(--border)]" />
       </div>
 
       {/* Google */}
@@ -159,7 +159,7 @@ export default function LoginPage() {
         variant="outline"
         disabled={isGoogleLoading}
         onClick={handleGoogleSignIn}
-        className="w-full border-[#27272a] bg-zinc-900 text-white hover:bg-zinc-800 hover:text-white"
+        className="w-full border-[var(--border)] bg-[var(--background)] text-[var(--text-primary)] hover:bg-[var(--border)]/30 hover:text-[var(--text-primary)]"
       >
         {isGoogleLoading ? (
           <Loader2 className="h-4 w-4 animate-spin" />
@@ -187,11 +187,11 @@ export default function LoginPage() {
       </Button>
 
       {/* Footer */}
-      <p className="mt-6 text-center text-sm text-zinc-500">
+      <p className="mt-6 text-center text-sm text-[var(--text-muted)]">
         Don&apos;t have an account?{" "}
         <Link
           href="/register"
-          className="text-white transition-colors hover:text-zinc-300"
+          className="text-[var(--text-primary)] transition-colors hover:opacity-80"
         >
           Sign up
         </Link>

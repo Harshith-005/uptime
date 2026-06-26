@@ -64,12 +64,12 @@ export default async function WebsitesPage() {
       />
 
       {allWebsites.length === 0 ? (
-        <div className="flex flex-col items-center justify-center rounded-lg border border-zinc-900/80 bg-[#050505] py-16">
-          <Globe className="mb-3 h-10 w-10 text-zinc-600" />
-          <p className="text-base font-medium text-white">
+        <div className="flex flex-col items-center justify-center rounded-lg border border-[var(--border)] bg-[var(--surface)] py-16">
+          <Globe className="mb-3 h-10 w-10 text-[var(--text-subtle)]" />
+          <p className="text-base font-medium text-[var(--text-primary)]">
             No websites added yet
           </p>
-          <p className="mt-1 text-sm text-zinc-500">
+          <p className="mt-1 text-sm text-[var(--text-muted)]">
             Start monitoring by adding your first website
           </p>
           <Button
@@ -93,9 +93,9 @@ export default async function WebsitesPage() {
         position="bottom-center"
         toastOptions={{
           style: {
-            background: "#18181b",
-            border: "1px solid #27272a",
-            color: "#ffffff",
+            background: "var(--surface)",
+            border: "1px solid var(--border)",
+            color: "var(--text-primary)",
           },
         }}
       />

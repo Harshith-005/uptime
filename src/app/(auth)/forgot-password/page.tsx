@@ -34,7 +34,7 @@ export default function ForgotPasswordPage() {
   }
 
   return (
-    <div className="w-full max-w-[400px] rounded-lg border border-[#27272a] bg-[#18181b] p-6">
+    <div className="w-full max-w-[400px] mx-4 sm:mx-auto rounded-lg border border-[var(--border)] bg-[var(--surface)] p-6">
       {/* Logo */}
       <div className="mb-6 flex items-center justify-center gap-2">
         <div className="flex h-8 w-8 items-center justify-center rounded-md bg-white">
@@ -61,13 +61,13 @@ export default function ForgotPasswordPage() {
             />
           </svg>
         </div>
-        <span className="text-lg font-semibold text-white">UptimeGuard</span>
+        <span className="text-lg font-semibold text-[var(--text-primary)]">UptimeGuard</span>
       </div>
 
       {/* Heading */}
       <div className="mb-6 text-center">
-        <h1 className="text-xl font-semibold text-white">Reset password</h1>
-        <p className="mt-1 text-sm text-zinc-500">
+        <h1 className="text-xl font-semibold text-[var(--text-primary)]">Reset password</h1>
+        <p className="mt-1 text-sm text-[var(--text-muted)]">
           {isSent
             ? "Check your email for the reset link"
             : "Enter your email to receive a reset link"}
@@ -76,9 +76,9 @@ export default function ForgotPasswordPage() {
 
       {isSent ? (
         <div className="flex flex-col gap-4">
-          <div className="rounded-md border border-[#27272a] bg-zinc-900 p-4 text-center text-sm text-zinc-400">
+          <div className="rounded-md border border-[var(--border)] bg-[var(--background)] p-4 text-center text-sm text-[var(--text-muted)]">
             Reset link sent to{" "}
-            <span className="font-medium text-white">{email}</span>. Check your
+            <span className="font-medium text-[var(--text-primary)]">{email}</span>. Check your
             inbox and spam folder.
           </div>
           <Button
@@ -88,7 +88,7 @@ export default function ForgotPasswordPage() {
               setIsSent(false);
               setEmail("");
             }}
-            className="w-full border-[#27272a] bg-zinc-900 text-white hover:bg-zinc-800 hover:text-white"
+            className="w-full border-[var(--border)] bg-[var(--background)] text-[var(--text-primary)] hover:bg-[var(--border)]/30 hover:text-[var(--text-primary)]"
           >
             Try a different email
           </Button>
@@ -96,7 +96,7 @@ export default function ForgotPasswordPage() {
       ) : (
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
-            <Label htmlFor="email" className="text-sm text-zinc-400">
+            <Label htmlFor="email" className="text-sm text-[var(--text-muted)]">
               Email
             </Label>
             <Input
@@ -106,7 +106,7 @@ export default function ForgotPasswordPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="border-[#27272a] bg-zinc-900 text-white placeholder:text-zinc-600 focus-visible:ring-zinc-600"
+              className="border-[var(--border)] bg-[var(--background)] text-[var(--text-primary)] placeholder:text-[var(--text-subtle)] focus-visible:ring-[var(--text-subtle)]"
             />
           </div>
 
@@ -131,7 +131,7 @@ export default function ForgotPasswordPage() {
       <div className="mt-6 text-center">
         <Link
           href="/login"
-          className="inline-flex items-center gap-1 text-sm text-zinc-500 transition-colors hover:text-white"
+          className="inline-flex items-center gap-1 text-sm text-[var(--text-muted)] transition-colors hover:text-[var(--text-primary)]"
         >
           <ArrowLeft className="h-3.5 w-3.5" />
           Back to login

@@ -176,7 +176,7 @@ export default function EditWebsitePage({
   if (isFetching) {
     return (
       <div className="flex h-[400px] items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-zinc-500" />
+        <Loader2 className="h-8 w-8 animate-spin text-[var(--text-muted)]" />
       </div>
     );
   }
@@ -188,12 +188,12 @@ export default function EditWebsitePage({
         description="Update your monitoring settings"
       />
 
-      <form onSubmit={handleSubmit} className="max-w-[560px]">
-        <div className="rounded-lg border border-zinc-800 bg-[#18181b] p-6">
+      <form onSubmit={handleSubmit} className="w-full max-w-[560px]">
+        <div className="rounded-lg border border-[var(--border)] bg-[var(--surface)] p-6">
           <div className="flex flex-col gap-5">
             {/* Website Name */}
             <div className="flex flex-col gap-2">
-              <Label htmlFor="name" className="text-sm text-zinc-400">
+              <Label htmlFor="name" className="text-sm text-[var(--text-muted)]">
                 Website Name
               </Label>
               <Input
@@ -203,13 +203,13 @@ export default function EditWebsitePage({
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
-                className="border-zinc-800 bg-zinc-900 text-white placeholder:text-zinc-600 focus-visible:ring-zinc-600"
+                className="border-[var(--border)] bg-[var(--background)] text-[var(--text-primary)] placeholder:text-[var(--text-subtle)] focus-visible:ring-[var(--text-subtle)]"
               />
             </div>
 
             {/* URL */}
             <div className="flex flex-col gap-2">
-              <Label htmlFor="url" className="text-sm text-zinc-400">
+              <Label htmlFor="url" className="text-sm text-[var(--text-muted)]">
                 URL
               </Label>
               <Input
@@ -220,13 +220,13 @@ export default function EditWebsitePage({
                 onChange={(e) => setUrl(e.target.value)}
                 onBlur={handleUrlBlur}
                 required
-                className="border-zinc-800 bg-zinc-900 text-white placeholder:text-zinc-600 focus-visible:ring-zinc-600"
+                className="border-[var(--border)] bg-[var(--background)] text-[var(--text-primary)] placeholder:text-[var(--text-subtle)] focus-visible:ring-[var(--text-subtle)]"
               />
             </div>
 
             {/* Slug */}
             <div className="flex flex-col gap-2">
-              <Label htmlFor="slug" className="text-sm text-zinc-400">
+              <Label htmlFor="slug" className="text-sm text-[var(--text-muted)]">
                 Status Page Slug
               </Label>
               <Input
@@ -236,13 +236,13 @@ export default function EditWebsitePage({
                 value={slug}
                 onChange={(e) => handleSlugChange(e.target.value)}
                 required
-                className="border-zinc-800 bg-zinc-900 text-white placeholder:text-zinc-600 focus-visible:ring-zinc-600"
+                className="border-[var(--border)] bg-[var(--background)] text-[var(--text-primary)] placeholder:text-[var(--text-subtle)] focus-visible:ring-[var(--text-subtle)]"
               />
               {slug && (
-                <p className="text-xs text-zinc-500">
+                <p className="text-xs text-[var(--text-muted)]">
                   /status/
                   <span
-                    className="text-zinc-400"
+                    className="text-[var(--text-primary)]"
                     style={{ fontFamily: "var(--font-geist-mono)" }}
                   >
                     {slug}
@@ -253,7 +253,7 @@ export default function EditWebsitePage({
           </div>
 
           {/* Actions */}
-          <div className="mt-6 flex items-center justify-between">
+          <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
             <Button
               type="button"
               variant="ghost"
@@ -264,19 +264,19 @@ export default function EditWebsitePage({
               Delete Website
             </Button>
 
-            <div className="flex gap-3">
+            <div className="flex gap-3 w-full sm:w-auto">
               <Button
                 type="button"
                 variant="outline"
                 asChild
-                className="border-zinc-800 text-white hover:bg-zinc-900 hover:text-white"
+                className="flex-1 sm:flex-none border-[var(--border)] text-[var(--text-primary)] hover:bg-[var(--border)]/30 hover:text-[var(--text-primary)]"
               >
                 <Link href={`/websites/${id}`}>Cancel</Link>
               </Button>
               <Button
                 type="submit"
                 disabled={isUpdating}
-                className="bg-white text-black hover:bg-zinc-200"
+                className="flex-1 sm:flex-none bg-white text-black hover:bg-zinc-200"
               >
                 {isUpdating ? (
                   <>
@@ -297,12 +297,12 @@ export default function EditWebsitePage({
         open={showDeleteDialog}
         onOpenChange={setShowDeleteDialog}
       >
-        <DialogContent className="border-zinc-800 bg-[#18181b]">
+        <DialogContent className="border-[var(--border)] bg-[var(--surface)]">
           <DialogHeader>
-            <DialogTitle className="text-white">Delete Website</DialogTitle>
-            <DialogDescription className="text-zinc-400">
+            <DialogTitle className="text-[var(--text-primary)]">Delete Website</DialogTitle>
+            <DialogDescription className="text-[var(--text-muted)]">
               This will permanently delete{" "}
-              <span className="font-medium text-white">{website?.name}</span>{" "}
+              <span className="font-medium text-[var(--text-primary)]">{website?.name}</span>{" "}
               and all monitoring history. This cannot be undone.
             </DialogDescription>
           </DialogHeader>
@@ -310,7 +310,7 @@ export default function EditWebsitePage({
             <Button
               variant="outline"
               onClick={() => setShowDeleteDialog(false)}
-              className="border-zinc-800 text-white hover:bg-zinc-900 hover:text-white"
+              className="border-[var(--border)] text-[var(--text-primary)] hover:bg-[var(--border)]/30 hover:text-[var(--text-primary)]"
             >
               Cancel
             </Button>
@@ -336,9 +336,9 @@ export default function EditWebsitePage({
         position="bottom-center"
         toastOptions={{
           style: {
-            background: "#18181b",
-            border: "1px solid #27272a",
-            color: "#ffffff",
+            background: "var(--surface)",
+            border: "1px solid var(--border)",
+            color: "var(--text-primary)",
           },
         }}
       />

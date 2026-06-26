@@ -98,7 +98,7 @@ export default async function IncidentsPage() {
       />
 
       {/* Summary Row */}
-      <div className="mb-8 grid grid-cols-3 gap-4">
+      <div className="mb-8 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
         <StatCard
           title="Total Incidents"
           value={incidents.length}
@@ -118,12 +118,12 @@ export default async function IncidentsPage() {
       </div>
 
       {incidents.length === 0 ? (
-        <div className="flex flex-col items-center justify-center rounded-lg border border-zinc-800 bg-[#18181b] py-16 mt-8">
+        <div className="flex flex-col items-center justify-center rounded-lg border border-[var(--border)] bg-[var(--surface)] py-16 mt-8">
           <CheckCircle className="mb-4 h-10 w-10 text-green-500" />
-          <p className="text-base font-medium text-white">
+          <p className="text-base font-medium text-[var(--text-primary)]">
             No incidents recorded
           </p>
-          <p className="mt-1 text-sm text-zinc-500">
+          <p className="mt-1 text-sm text-[var(--text-muted)]">
             All your monitors have been running smoothly
           </p>
         </div>
@@ -132,20 +132,20 @@ export default async function IncidentsPage() {
           {/* Open Incidents */}
           {openIncidents.length > 0 && (
             <div className="mb-8">
-              <h2 className="mb-4 text-lg font-semibold text-white">
+              <h2 className="mb-4 text-lg font-semibold text-[var(--text-primary)]">
                 Open Incidents
               </h2>
               <div className="flex flex-col gap-2">
                 {openIncidents.map((incident) => (
                   <div
                     key={incident.id}
-                    className="flex items-center gap-4 rounded-lg border border-zinc-800 border-l-red-500 border-l-2 bg-[#18181b] p-4"
+                    className="flex items-center gap-4 rounded-lg border border-[var(--border)] border-l-red-500 border-l-2 bg-[var(--surface)] p-4"
                   >
                     {/* Left: Info */}
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2">
                         <div className="h-2.5 w-2.5 flex-shrink-0 rounded-full bg-red-500" />
-                        <span className="font-medium text-white">
+                        <span className="font-medium text-[var(--text-primary)]">
                           {incident.website.name}
                         </span>
                         <Badge
@@ -160,18 +160,18 @@ export default async function IncidentsPage() {
                           OPEN
                         </Badge>
                       </div>
-                      <p className="mt-1 text-xs text-zinc-500">
+                      <p className="mt-1 text-xs text-[var(--text-muted)]">
                         {incident.website.url}
                       </p>
-                      <div className="mt-3 flex items-center gap-2">
-                        <span className="text-sm text-zinc-500">Started</span>
+                      <div className="mt-3 flex items-center gap-2 flex-wrap">
+                        <span className="text-sm text-[var(--text-muted)]">Started</span>
                         <span
-                          className="text-sm text-zinc-400"
+                          className="text-sm text-[var(--text-muted)]"
                           style={{ fontFamily: "var(--font-geist-mono)" }}
                         >
                           {formatDateTime(incident.started_at)}
                         </span>
-                        <span className="rounded-full bg-zinc-700 px-2 py-0.5 text-xs text-zinc-400">
+                        <span className="rounded-full bg-[var(--border)] px-2 py-0.5 text-xs text-[var(--text-muted)]">
                           Ongoing
                         </span>
                       </div>
@@ -180,7 +180,7 @@ export default async function IncidentsPage() {
                     {/* Right: Action */}
                     <Link
                       href={`/websites/${incident.website_id}`}
-                      className="rounded-md p-2 text-zinc-400 transition-colors hover:text-white"
+                      className="rounded-md p-2 text-[var(--text-muted)] transition-colors hover:text-[var(--text-primary)]"
                       title="View Website"
                     >
                       <ArrowRight className="h-5 w-5" />
@@ -193,19 +193,19 @@ export default async function IncidentsPage() {
 
           {/* Incident History Table */}
           <div>
-            <h2 className="mb-4 mt-8 text-lg font-semibold text-white">
+            <h2 className="mb-4 mt-8 text-lg font-semibold text-[var(--text-primary)]">
               Incident History
             </h2>
-            <div className="rounded-lg border border-zinc-800 bg-[#18181b]">
+            <div className="rounded-lg border border-[var(--border)] bg-[var(--surface)]">
               <Table>
                 <TableHeader>
-                  <TableRow className="border-zinc-800 hover:bg-transparent">
-                    <TableHead className="text-zinc-500">Website</TableHead>
-                    <TableHead className="text-zinc-500">Started</TableHead>
-                    <TableHead className="text-zinc-500">Resolved</TableHead>
-                    <TableHead className="text-zinc-500">Duration</TableHead>
-                    <TableHead className="text-zinc-500">Status</TableHead>
-                    <TableHead className="text-right text-zinc-500">
+                  <TableRow className="border-[var(--border)] hover:bg-transparent">
+                    <TableHead className="text-[var(--text-muted)]">Website</TableHead>
+                    <TableHead className="hidden sm:table-cell text-[var(--text-muted)]">Started</TableHead>
+                    <TableHead className="hidden sm:table-cell text-[var(--text-muted)]">Resolved</TableHead>
+                    <TableHead className="hidden sm:table-cell text-[var(--text-muted)]">Duration</TableHead>
+                    <TableHead className="text-[var(--text-muted)]">Status</TableHead>
+                    <TableHead className="text-right text-[var(--text-muted)]">
                       Actions
                     </TableHead>
                   </TableRow>
@@ -218,32 +218,32 @@ export default async function IncidentsPage() {
                     return (
                       <TableRow
                         key={incident.id}
-                        className="border-zinc-800 hover:bg-zinc-900/50"
+                        className="border-[var(--border)] hover:bg-[var(--border)]/30"
                       >
                         {/* Website */}
                         <TableCell>
-                          <p className="text-sm font-medium text-white">
+                          <p className="text-sm font-medium text-[var(--text-primary)]">
                             {incident.website.name}
                           </p>
-                          <p className="text-xs text-zinc-500">
+                          <p className="text-xs text-[var(--text-muted)]">
                             {incident.website.url}
                           </p>
                         </TableCell>
 
-                        {/* Started */}
-                        <TableCell>
+                        {/* Started — hidden on mobile */}
+                        <TableCell className="hidden sm:table-cell">
                           <span
-                            className="text-sm text-zinc-400"
+                            className="text-sm text-[var(--text-muted)]"
                             style={{ fontFamily: "var(--font-geist-mono)" }}
                           >
                             {formatDateTime(incident.started_at)}
                           </span>
                         </TableCell>
 
-                        {/* Resolved */}
-                        <TableCell>
+                        {/* Resolved — hidden on mobile */}
+                        <TableCell className="hidden sm:table-cell">
                           <span
-                            className="text-sm text-zinc-400"
+                            className="text-sm text-[var(--text-muted)]"
                             style={{ fontFamily: "var(--font-geist-mono)" }}
                           >
                             {incident.resolved_at
@@ -252,10 +252,10 @@ export default async function IncidentsPage() {
                           </span>
                         </TableCell>
 
-                        {/* Duration */}
-                        <TableCell>
+                        {/* Duration — hidden on mobile */}
+                        <TableCell className="hidden sm:table-cell">
                           <span
-                            className="text-sm text-zinc-400"
+                            className="text-sm text-[var(--text-muted)]"
                             style={{ fontFamily: "var(--font-geist-mono)" }}
                           >
                             {incident.status === "RESOLVED" &&
@@ -284,7 +284,7 @@ export default async function IncidentsPage() {
                         <TableCell className="text-right">
                           <Link
                             href={`/websites/${incident.website_id}`}
-                            className="inline-flex rounded-md p-1.5 text-zinc-400 transition-colors hover:text-white"
+                            className="inline-flex rounded-md p-1.5 text-[var(--text-muted)] transition-colors hover:text-[var(--text-primary)]"
                           >
                             <ArrowRight className="h-4 w-4" />
                           </Link>

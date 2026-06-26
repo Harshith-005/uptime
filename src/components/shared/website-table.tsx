@@ -74,16 +74,16 @@ export function WebsiteTable({
 
   return (
     <TooltipProvider delayDuration={300}>
-      <div className="rounded-lg border border-zinc-800 bg-[#18181b]">
+      <div className="rounded-lg border border-[var(--border)] bg-[var(--surface)]">
         <Table>
           <TableHeader>
-            <TableRow className="border-zinc-800 hover:bg-transparent">
-              <TableHead className="text-zinc-500">Name</TableHead>
-              <TableHead className="text-zinc-500">Status</TableHead>
-              <TableHead className="text-zinc-500">Uptime</TableHead>
-              <TableHead className="text-zinc-500">Response Time</TableHead>
-              <TableHead className="text-zinc-500">Last Checked</TableHead>
-              <TableHead className="text-right text-zinc-500">
+            <TableRow className="border-[var(--border)] hover:bg-transparent">
+              <TableHead className="text-[var(--text-muted)]">Name</TableHead>
+              <TableHead className="text-[var(--text-muted)]">Status</TableHead>
+              <TableHead className="hidden sm:table-cell text-[var(--text-muted)]">Uptime</TableHead>
+              <TableHead className="hidden sm:table-cell text-[var(--text-muted)]">Response Time</TableHead>
+              <TableHead className="hidden sm:table-cell text-[var(--text-muted)]">Last Checked</TableHead>
+              <TableHead className="text-right text-[var(--text-muted)]">
                 Actions
               </TableHead>
             </TableRow>
@@ -96,7 +96,7 @@ export function WebsiteTable({
               return (
                 <TableRow
                   key={website.id}
-                  className="border-zinc-800 hover:bg-zinc-900/50"
+                  className="border-[var(--border)] hover:bg-[var(--border)]/30"
                 >
                   {/* Name */}
                   <TableCell>
@@ -104,8 +104,8 @@ export function WebsiteTable({
                       href={`/websites/${website.id}`}
                       className="block transition-opacity hover:opacity-80"
                     >
-                      <p className="font-medium text-white">{website.name}</p>
-                      <p className="text-xs text-zinc-500">{website.url}</p>
+                      <p className="font-medium text-[var(--text-primary)]">{website.name}</p>
+                      <p className="text-xs text-[var(--text-muted)]">{website.url}</p>
                     </Link>
                   </TableCell>
 
@@ -124,10 +124,10 @@ export function WebsiteTable({
                     </Badge>
                   </TableCell>
 
-                  {/* Uptime */}
-                  <TableCell>
+                  {/* Uptime — hidden on mobile */}
+                  <TableCell className="hidden sm:table-cell">
                     <span
-                      className="text-zinc-400"
+                      className="text-[var(--text-muted)]"
                       style={{ fontFamily: "var(--font-geist-mono)" }}
                     >
                       {website.uptime_percentage != null
@@ -136,24 +136,24 @@ export function WebsiteTable({
                     </span>
                   </TableCell>
 
-                  {/* Response Time */}
-                  <TableCell>
+                  {/* Response Time — hidden on mobile */}
+                  <TableCell className="hidden sm:table-cell">
                     <span
-                      className="text-zinc-400"
+                      className="text-[var(--text-muted)]"
                       style={{ fontFamily: "var(--font-geist-mono)" }}
                     >
                       {responseTime != null ? `${responseTime}ms` : "—"}
                     </span>
                   </TableCell>
 
-                  {/* Last Checked */}
-                  <TableCell>
+                  {/* Last Checked — hidden on mobile */}
+                  <TableCell className="hidden sm:table-cell">
                     {website.last_checked_at ? (
-                      <span className="text-sm text-zinc-400">
+                      <span className="text-sm text-[var(--text-muted)]">
                         {getRelativeTime(website.last_checked_at)}
                       </span>
                     ) : (
-                      <span className="text-sm text-zinc-600">Pending</span>
+                      <span className="text-sm text-[var(--text-subtle)]">Pending</span>
                     )}
                   </TableCell>
 
@@ -166,7 +166,7 @@ export function WebsiteTable({
                             href={website.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="rounded-md p-1.5 text-zinc-400 transition-colors hover:text-white"
+                            className="rounded-md p-1.5 text-[var(--text-muted)] transition-colors hover:text-[var(--text-primary)]"
                           >
                             <ExternalLink className="h-4 w-4" />
                           </a>
@@ -178,7 +178,7 @@ export function WebsiteTable({
                         <TooltipTrigger asChild>
                           <Link
                             href={`/websites/${website.id}`}
-                            className="rounded-md p-1.5 text-zinc-400 transition-colors hover:text-white"
+                            className="rounded-md p-1.5 text-[var(--text-muted)] transition-colors hover:text-[var(--text-primary)]"
                           >
                             <BarChart2 className="h-4 w-4" />
                           </Link>
@@ -190,7 +190,7 @@ export function WebsiteTable({
                         <TooltipTrigger asChild>
                           <Link
                             href={`/websites/${website.id}/edit`}
-                            className="rounded-md p-1.5 text-zinc-400 transition-colors hover:text-white"
+                            className="rounded-md p-1.5 text-[var(--text-muted)] transition-colors hover:text-[var(--text-primary)]"
                           >
                             <Pencil className="h-4 w-4" />
                           </Link>
@@ -202,7 +202,7 @@ export function WebsiteTable({
                         <TooltipTrigger asChild>
                           <button
                             onClick={() => setDeleteTarget(website)}
-                            className="rounded-md p-1.5 text-zinc-400 transition-colors hover:text-red-400"
+                            className="rounded-md p-1.5 text-[var(--text-muted)] transition-colors hover:text-red-400"
                           >
                             <Trash2 className="h-4 w-4" />
                           </button>
@@ -225,12 +225,12 @@ export function WebsiteTable({
           if (!open) setDeleteTarget(null);
         }}
       >
-        <DialogContent className="border-zinc-800 bg-[#18181b]">
+        <DialogContent className="border-[var(--border)] bg-[var(--surface)]">
           <DialogHeader>
-            <DialogTitle className="text-white">Delete Website</DialogTitle>
-            <DialogDescription className="text-zinc-400">
+            <DialogTitle className="text-[var(--text-primary)]">Delete Website</DialogTitle>
+            <DialogDescription className="text-[var(--text-muted)]">
               This will permanently delete{" "}
-              <span className="font-medium text-white">
+              <span className="font-medium text-[var(--text-primary)]">
                 {deleteTarget?.name}
               </span>{" "}
               and all its monitoring history. This action cannot be undone.
@@ -240,7 +240,7 @@ export function WebsiteTable({
             <Button
               variant="outline"
               onClick={() => setDeleteTarget(null)}
-              className="border-zinc-800 text-white hover:bg-zinc-900 hover:text-white"
+              className="border-[var(--border)] text-[var(--text-primary)] hover:bg-[var(--border)]/30 hover:text-[var(--text-primary)]"
             >
               Cancel
             </Button>

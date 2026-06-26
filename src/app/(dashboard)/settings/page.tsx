@@ -160,13 +160,13 @@ export default function SettingsPage() {
   if (isLoadingData) {
     return (
       <div className="flex h-[400px] items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-zinc-500" />
+        <Loader2 className="h-8 w-8 animate-spin text-[var(--text-muted)]" />
       </div>
     );
   }
 
   return (
-    <div className="mx-auto max-w-[640px]">
+    <div className="w-full max-w-[640px]">
       <PageHeader
         title="Settings"
         description="Manage your account and notification preferences"
@@ -174,19 +174,19 @@ export default function SettingsPage() {
 
       <div className="flex flex-col gap-8">
         {/* Profile Section */}
-        <div className="rounded-lg border border-zinc-800 bg-[#18181b] p-6">
+        <div className="rounded-lg border border-[var(--border)] bg-[var(--surface)] p-6">
           <div>
-            <h2 className="text-base font-semibold text-white">Profile</h2>
-            <p className="mt-1 text-sm text-zinc-500">
+            <h2 className="text-base font-semibold text-[var(--text-primary)]">Profile</h2>
+            <p className="mt-1 text-sm text-[var(--text-muted)]">
               Update your account information
             </p>
           </div>
-          <hr className="my-4 border-zinc-800" />
+          <hr className="my-4 border-[var(--border)]" />
 
           <form onSubmit={handleProfileSubmit}>
             <div className="flex flex-col gap-4">
               <div className="flex flex-col gap-2">
-                <Label htmlFor="name" className="text-sm text-zinc-400">
+                <Label htmlFor="name" className="text-sm text-[var(--text-muted)]">
                   Full Name
                 </Label>
                 <Input
@@ -194,12 +194,12 @@ export default function SettingsPage() {
                   type="text"
                   value={profileName}
                   onChange={(e) => setProfileName(e.target.value)}
-                  className="border-zinc-800 bg-zinc-900 text-white focus-visible:ring-zinc-600"
+                  className="border-[var(--border)] bg-[var(--background)] text-[var(--text-primary)] focus-visible:ring-[var(--text-subtle)]"
                 />
               </div>
 
               <div className="flex flex-col gap-2">
-                <Label htmlFor="email" className="text-sm text-zinc-400">
+                <Label htmlFor="email" className="text-sm text-[var(--text-muted)]">
                   Email
                 </Label>
                 <Input
@@ -207,9 +207,9 @@ export default function SettingsPage() {
                   type="email"
                   value={profileEmail}
                   disabled
-                  className="cursor-not-allowed border-zinc-800 bg-zinc-700 text-zinc-600"
+                  className="cursor-not-allowed border-[var(--border)] bg-[var(--border)]/50 text-[var(--text-subtle)]"
                 />
-                <p className="text-xs text-zinc-600">Email cannot be changed</p>
+                <p className="text-xs text-[var(--text-subtle)]">Email cannot be changed</p>
               </div>
             </div>
 
@@ -233,20 +233,20 @@ export default function SettingsPage() {
         </div>
 
         {/* SMTP Settings Section */}
-        <div className="rounded-lg border border-zinc-800 bg-[#18181b] p-6">
+        <div className="rounded-lg border border-[var(--border)] bg-[var(--surface)] p-6">
           <div>
-            <h2 className="text-base font-semibold text-white">
+            <h2 className="text-base font-semibold text-[var(--text-primary)]">
               Email Notifications
             </h2>
-            <p className="mt-1 text-sm text-zinc-500">
+            <p className="mt-1 text-sm text-[var(--text-muted)]">
               Configure your SMTP server to receive downtime alerts
             </p>
           </div>
-          <hr className="my-4 border-zinc-800" />
+          <hr className="my-4 border-[var(--border)]" />
 
-          <div className="mb-5 mt-4 flex items-start gap-2 rounded-md border border-zinc-700 bg-zinc-900 p-3">
-            <Info className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-zinc-400" />
-            <p className="text-xs text-zinc-400">
+          <div className="mb-5 mt-4 flex items-start gap-2 rounded-md border border-[var(--border)] bg-[var(--background)] p-3">
+            <Info className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-[var(--text-muted)]" />
+            <p className="text-xs text-[var(--text-muted)]">
               Alerts are sent using your own SMTP credentials. We never store
               your emails on our servers.
             </p>
@@ -254,9 +254,9 @@ export default function SettingsPage() {
 
           <form onSubmit={handleSmtpSubmit}>
             <div className="flex flex-col gap-4">
-              <div className="grid grid-cols-3 gap-4">
-                <div className="col-span-2 flex flex-col gap-2">
-                  <Label htmlFor="host" className="text-sm text-zinc-400">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="sm:col-span-2 flex flex-col gap-2">
+                  <Label htmlFor="host" className="text-sm text-[var(--text-muted)]">
                     SMTP Host
                   </Label>
                   <Input
@@ -265,11 +265,11 @@ export default function SettingsPage() {
                     placeholder="smtp.gmail.com"
                     value={smtpHost}
                     onChange={(e) => setSmtpHost(e.target.value)}
-                    className="border-zinc-800 bg-zinc-900 text-white placeholder:text-zinc-600 focus-visible:ring-zinc-600"
+                    className="border-[var(--border)] bg-[var(--background)] text-[var(--text-primary)] placeholder:text-[var(--text-subtle)] focus-visible:ring-[var(--text-subtle)]"
                   />
                 </div>
-                <div className="col-span-1 flex flex-col gap-2">
-                  <Label htmlFor="port" className="text-sm text-zinc-400">
+                <div className="sm:col-span-1 flex flex-col gap-2">
+                  <Label htmlFor="port" className="text-sm text-[var(--text-muted)]">
                     SMTP Port
                   </Label>
                   <Input
@@ -278,13 +278,13 @@ export default function SettingsPage() {
                     placeholder="587"
                     value={smtpPort}
                     onChange={(e) => setSmtpPort(e.target.value)}
-                    className="border-zinc-800 bg-zinc-900 text-white placeholder:text-zinc-600 focus-visible:ring-zinc-600"
+                    className="border-[var(--border)] bg-[var(--background)] text-[var(--text-primary)] placeholder:text-[var(--text-subtle)] focus-visible:ring-[var(--text-subtle)]"
                   />
                 </div>
               </div>
 
               <div className="flex flex-col gap-2">
-                <Label htmlFor="username" className="text-sm text-zinc-400">
+                <Label htmlFor="username" className="text-sm text-[var(--text-muted)]">
                   Username
                 </Label>
                 <Input
@@ -293,12 +293,12 @@ export default function SettingsPage() {
                   placeholder="you@gmail.com"
                   value={smtpUser}
                   onChange={(e) => setSmtpUser(e.target.value)}
-                  className="border-zinc-800 bg-zinc-900 text-white placeholder:text-zinc-600 focus-visible:ring-zinc-600"
+                  className="border-[var(--border)] bg-[var(--background)] text-[var(--text-primary)] placeholder:text-[var(--text-subtle)] focus-visible:ring-[var(--text-subtle)]"
                 />
               </div>
 
               <div className="flex flex-col gap-2">
-                <Label htmlFor="password" className="text-sm text-zinc-400">
+                <Label htmlFor="password" className="text-sm text-[var(--text-muted)]">
                   Password
                 </Label>
                 <Input
@@ -307,15 +307,15 @@ export default function SettingsPage() {
                   placeholder="••••••••"
                   value={smtpPass}
                   onChange={(e) => setSmtpPass(e.target.value)}
-                  className="border-zinc-800 bg-zinc-900 text-white placeholder:text-zinc-600 focus-visible:ring-zinc-600"
+                  className="border-[var(--border)] bg-[var(--background)] text-[var(--text-primary)] placeholder:text-[var(--text-subtle)] focus-visible:ring-[var(--text-subtle)]"
                 />
-                <p className="text-xs text-zinc-500">
+                <p className="text-xs text-[var(--text-muted)]">
                   Use an app password if using Gmail
                 </p>
               </div>
 
               <div className="flex flex-col gap-2">
-                <Label htmlFor="from_name" className="text-sm text-zinc-400">
+                <Label htmlFor="from_name" className="text-sm text-[var(--text-muted)]">
                   From Name
                 </Label>
                 <Input
@@ -324,12 +324,12 @@ export default function SettingsPage() {
                   placeholder="UptimeGuard Alerts"
                   value={smtpFromName}
                   onChange={(e) => setSmtpFromName(e.target.value)}
-                  className="border-zinc-800 bg-zinc-900 text-white placeholder:text-zinc-600 focus-visible:ring-zinc-600"
+                  className="border-[var(--border)] bg-[var(--background)] text-[var(--text-primary)] placeholder:text-[var(--text-subtle)] focus-visible:ring-[var(--text-subtle)]"
                 />
               </div>
 
               <div className="flex flex-col gap-2">
-                <Label htmlFor="from_email" className="text-sm text-zinc-400">
+                <Label htmlFor="from_email" className="text-sm text-[var(--text-muted)]">
                   From Email
                 </Label>
                 <Input
@@ -338,18 +338,18 @@ export default function SettingsPage() {
                   placeholder="alerts@yourdomain.com"
                   value={smtpFromEmail}
                   onChange={(e) => setSmtpFromEmail(e.target.value)}
-                  className="border-zinc-800 bg-zinc-900 text-white placeholder:text-zinc-600 focus-visible:ring-zinc-600"
+                  className="border-[var(--border)] bg-[var(--background)] text-[var(--text-primary)] placeholder:text-[var(--text-subtle)] focus-visible:ring-[var(--text-subtle)]"
                 />
               </div>
             </div>
 
-            <div className="mt-5 flex items-center justify-between">
+            <div className="mt-5 flex flex-col sm:flex-row items-center justify-between gap-3">
               <Button
                 type="button"
                 variant="outline"
                 onClick={handleTestEmail}
                 disabled={isSendingTest}
-                className="border-zinc-800 text-white hover:bg-zinc-900 hover:text-white"
+                className="w-full sm:w-auto border-[var(--border)] text-[var(--text-primary)] hover:bg-[var(--border)]/30 hover:text-[var(--text-primary)]"
               >
                 {isSendingTest ? (
                   <>
@@ -366,7 +366,7 @@ export default function SettingsPage() {
               <Button
                 type="submit"
                 disabled={isSavingSmtp}
-                className="bg-white text-black hover:bg-zinc-200"
+                className="w-full sm:w-auto bg-white text-black hover:bg-zinc-200"
               >
                 {isSavingSmtp ? (
                   <>
@@ -382,21 +382,21 @@ export default function SettingsPage() {
         </div>
 
         {/* Danger Zone Section */}
-        <div className="rounded-lg border border-red-900 bg-[#18181b] p-6">
+        <div className="rounded-lg border border-red-900 bg-[var(--surface)] p-6">
           <div>
             <h2 className="text-base font-semibold text-red-400">
               Danger Zone
             </h2>
-            <p className="mt-1 text-sm text-zinc-500">
+            <p className="mt-1 text-sm text-[var(--text-muted)]">
               Irreversible actions — proceed with caution
             </p>
           </div>
-          <hr className="my-4 border-zinc-800" />
+          <hr className="my-4 border-[var(--border)]" />
 
-          <div className="mt-5 flex items-center justify-between">
+          <div className="mt-5 flex flex-col sm:flex-row items-center justify-between gap-3">
             <div>
-              <p className="text-sm font-medium text-white">Delete Account</p>
-              <p className="mt-0.5 text-xs text-zinc-500">
+              <p className="text-sm font-medium text-[var(--text-primary)]">Delete Account</p>
+              <p className="mt-0.5 text-xs text-[var(--text-muted)]">
                 Permanently delete your account and all monitoring data
               </p>
             </div>
@@ -406,7 +406,7 @@ export default function SettingsPage() {
                 setDeleteConfirmText("");
                 setShowDeleteDialog(true);
               }}
-              className="border-red-800 text-red-400 hover:bg-red-950 hover:text-red-400"
+              className="w-full sm:w-auto border-red-800 text-red-400 hover:bg-red-950 hover:text-red-400"
             >
               Delete Account
             </Button>
@@ -416,25 +416,25 @@ export default function SettingsPage() {
 
       {/* Delete Account Dialog */}
       <Dialog open={showDeleteDialog} onOpenChange={setShowDeleteDialog}>
-        <DialogContent className="border-zinc-800 bg-[#18181b]">
+        <DialogContent className="border-[var(--border)] bg-[var(--surface)]">
           <DialogHeader>
-            <DialogTitle className="text-white">Delete Account</DialogTitle>
-            <DialogDescription className="text-zinc-400">
+            <DialogTitle className="text-[var(--text-primary)]">Delete Account</DialogTitle>
+            <DialogDescription className="text-[var(--text-muted)]">
               This will permanently delete your account, all websites,
               monitoring logs, and incidents. This cannot be undone.
             </DialogDescription>
           </DialogHeader>
 
           <div className="my-4 flex flex-col gap-2">
-            <Label className="text-xs text-zinc-400">
-              Type <span className="font-bold text-white">DELETE</span> to
+            <Label className="text-xs text-[var(--text-muted)]">
+              Type <span className="font-bold text-[var(--text-primary)]">DELETE</span> to
               confirm
             </Label>
             <Input
               type="text"
               value={deleteConfirmText}
               onChange={(e) => setDeleteConfirmText(e.target.value)}
-              className="border-zinc-800 bg-zinc-900 text-white focus-visible:ring-zinc-600"
+              className="border-[var(--border)] bg-[var(--background)] text-[var(--text-primary)] focus-visible:ring-[var(--text-subtle)]"
             />
           </div>
 
@@ -442,7 +442,7 @@ export default function SettingsPage() {
             <Button
               variant="outline"
               onClick={() => setShowDeleteDialog(false)}
-              className="border-zinc-800 text-white hover:bg-zinc-900 hover:text-white"
+              className="border-[var(--border)] text-[var(--text-primary)] hover:bg-[var(--border)]/30 hover:text-[var(--text-primary)]"
             >
               Cancel
             </Button>
@@ -468,9 +468,9 @@ export default function SettingsPage() {
         position="bottom-center"
         toastOptions={{
           style: {
-            background: "#18181b",
-            border: "1px solid #27272a",
-            color: "#ffffff",
+            background: "var(--surface)",
+            border: "1px solid var(--border)",
+            color: "var(--text-primary)",
           },
         }}
       />

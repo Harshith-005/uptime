@@ -8,15 +8,15 @@ export default function AuthLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-[#0a0a0a]">
+    <div className="flex min-h-screen items-center justify-center bg-[var(--background)]">
       {children}
       <Toaster
         position="bottom-center"
         toastOptions={{
           style: {
-            background: "#18181b",
-            border: "1px solid #27272a",
-            color: "#ffffff",
+            background: "var(--surface)",
+            border: "1px solid var(--border)",
+            color: "var(--text-primary)",
           },
         }}
       />
