@@ -22,6 +22,12 @@ export const metadata: Metadata = {
   },
   description: 'Monitor your websites and get instant alerts when downtime is detected.',
   keywords: ['uptime monitoring', 'website monitoring', 'downtime alerts'],
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+    ],
+    apple: '/icon.svg',
+  },
   openGraph: {
     title: 'UptimeGuard',
     description: 'Monitor your websites and get instant alerts when downtime is detected.',

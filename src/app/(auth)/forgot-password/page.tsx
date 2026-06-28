@@ -38,27 +38,9 @@ export default function ForgotPasswordPage() {
       {/* Logo */}
       <div className="mb-6 flex items-center justify-center gap-2">
         <div className="flex h-8 w-8 items-center justify-center rounded-md bg-white">
-          <svg
-            width="18"
-            height="18"
-            viewBox="0 0 18 18"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M9 1.5L2 5.5V12.5L9 16.5L16 12.5V5.5L9 1.5Z"
-              fill="#0a0a0a"
-              stroke="#0a0a0a"
-              strokeWidth="1.5"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M5.5 9L8 11.5L13 6.5"
-              stroke="white"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" width="18" height="18">
+            <path d="M16 2L4 7v9c0 6.5 5.1 12.6 12 14 6.9-1.4 12-7.5 12-14V7L16 2z" fill="#0a0a0a" stroke="#22c55e" strokeWidth="1.5" />
+            <polyline points="6,16 10,16 12,11 14,21 16,14 18,18 20,16 26,16" fill="none" stroke="#22c55e" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </div>
         <span className="text-lg font-semibold text-[var(--text-primary)]">UptimeGuard</span>

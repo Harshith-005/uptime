@@ -10,7 +10,13 @@ export default function LandingPage() {
 
       {/* Navbar */}
       <nav className="flex items-center justify-between px-6 py-6 max-w-[1200px] mx-auto relative z-50">
-        <div className="font-bold text-xl tracking-tight">uptime.guard</div>
+        <div className="flex items-center gap-2 font-bold text-xl tracking-tight">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" className="w-5 h-5 flex-shrink-0">
+            <path d="M16 2L4 7v9c0 6.5 5.1 12.6 12 14 6.9-1.4 12-7.5 12-14V7L16 2z" fill="#0a0a0a" stroke="#22c55e" strokeWidth="1.5" />
+            <polyline points="6,16 10,16 12,11 14,21 16,14 18,18 20,16 26,16" fill="none" stroke="#22c55e" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          uptime.guard
+        </div>
         
         {/* Center Nav Links */}
         <div className="hidden md:flex items-center gap-2 text-base font-medium text-[var(--text-muted)]">
@@ -380,6 +386,126 @@ export default function LandingPage() {
                  </div>
                </div>
              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Section: Keep your free tier alive */}
+        <div className="mt-20">
+          <div style={{ maxWidth: 1100, margin: '0 auto', padding: '96px 32px' }}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+              {/* Left Column — Text */}
+              <div>
+                <span className="inline-block text-xs font-medium tracking-wide uppercase text-[var(--text-muted)] border border-[var(--border)] rounded-full px-3 py-1">
+                  Free tier hack
+                </span>
+                <h2 className="text-[var(--text-primary)] text-4xl font-bold mt-3 mb-4 tracking-tight">
+                  Keep Supabase awake.<br />Automatically.
+                </h2>
+                <p className="text-[var(--text-muted)] text-base leading-relaxed mb-6">
+                  Supabase free tier pauses your database after 7 days of inactivity. Add your Supabase project URL as a monitor and UptimeGuard pings it every 5 minutes — keeping it alive forever, for free.
+                </p>
+                <div className="flex flex-col gap-3 mb-8">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="h-3.5 w-3.5 flex-shrink-0" style={{ color: '#22c55e' }} />
+                    <span className="text-[var(--text-secondary)] text-sm">No code changes required</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="h-3.5 w-3.5 flex-shrink-0" style={{ color: '#22c55e' }} />
+                    <span className="text-[var(--text-secondary)] text-sm">Works with any free tier service</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="h-3.5 w-3.5 flex-shrink-0" style={{ color: '#22c55e' }} />
+                    <span className="text-[var(--text-secondary)] text-sm">Get alerted if it actually goes down</span>
+                  </div>
+                </div>
+                <Link
+                  href="/register"
+                  className="text-[var(--text-primary)] text-sm font-semibold underline-offset-4 hover:underline hover:text-[var(--text-muted)] transition-colors"
+                >
+                  Start monitoring free →
+                </Link>
+              </div>
+
+              {/* Right Column — Mock Card */}
+              <div className="flex flex-col items-center md:items-end">
+                <div
+                  className="w-full max-w-[400px] rounded-xl p-6"
+                  style={{
+                    backgroundColor: '#111113',
+                    border: '1px solid rgba(255,255,255,0.08)',
+                  }}
+                >
+                  {/* Card header */}
+                  <div className="mb-5">
+                    <span className="text-[var(--text-primary)] text-sm font-semibold">Add Monitor</span>
+                    <div className="mt-3" style={{ height: 1, backgroundColor: 'rgba(255,255,255,0.06)' }} />
+                  </div>
+
+                  {/* Mock input rows */}
+                  <div className="flex flex-col gap-3">
+                    {/* Row 1: Name */}
+                    <div>
+                      <label className="block text-xs mb-1" style={{ color: '#71717a' }}>Name</label>
+                      <div
+                        className="rounded-md px-3 py-2 text-sm font-mono"
+                        style={{
+                          backgroundColor: 'rgba(255,255,255,0.04)',
+                          border: '1px solid rgba(255,255,255,0.08)',
+                          color: '#d4d4d8',
+                        }}
+                      >
+                        My Supabase Project
+                      </div>
+                    </div>
+
+                    {/* Row 2: URL */}
+                    <div>
+                      <label className="block text-xs mb-1" style={{ color: '#71717a' }}>URL</label>
+                      <div
+                        className="rounded-md px-3 py-2 text-sm font-mono"
+                        style={{
+                          backgroundColor: 'rgba(255,255,255,0.04)',
+                          border: '1px solid rgba(34,197,94,0.3)',
+                          color: '#d4d4d8',
+                        }}
+                      >
+                        https://xxxx.supabase.co
+                      </div>
+                    </div>
+
+                    {/* Row 3: Check interval */}
+                    <div>
+                      <label className="block text-xs mb-1" style={{ color: '#71717a' }}>Check interval</label>
+                      <div
+                        className="rounded-md px-3 py-2 text-sm"
+                        style={{
+                          backgroundColor: 'rgba(255,255,255,0.04)',
+                          border: '1px solid rgba(255,255,255,0.08)',
+                          color: '#d4d4d8',
+                        }}
+                      >
+                        Every 5 minutes
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Mock button */}
+                  <div className="mt-5">
+                    <div
+                      className="w-full rounded-md py-2.5 text-center text-sm font-semibold"
+                      style={{ backgroundColor: 'white', color: 'black' }}
+                    >
+                      Start Monitoring
+                    </div>
+                  </div>
+                </div>
+
+                {/* Note below card */}
+                <p className="text-xs text-center mt-3 max-w-[400px] w-full" style={{ color: '#52525b' }}>
+                  Works with Supabase, PlanetScale, Railway, and any free tier that pauses on inactivity.
+                </p>
+              </div>
             </div>
           </div>
         </div>

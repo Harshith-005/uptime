@@ -9,11 +9,11 @@ import {
   AlertTriangle,
   Settings,
   LogOut,
-  Shield,
 } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/shared/theme-toggle";
+import { LogoIcon } from "@/components/shared/logo-icon";
 
 const navItems = [
   {
@@ -121,7 +121,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
       >
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 px-6 py-5 hover:opacity-80 transition-opacity">
-          <Shield className="h-5 w-5 text-[var(--text-primary)]" strokeWidth={2} />
+          <LogoIcon className="w-5 h-5 flex-shrink-0" />
           <span className="text-lg font-semibold text-[var(--text-primary)]" style={{ fontFamily: "var(--font-geist-sans)" }}>
             UptimeGuard
           </span>

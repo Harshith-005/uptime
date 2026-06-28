@@ -1,7 +1,8 @@
 "use client";
 
-import { Shield, Menu } from "lucide-react";
+import { Menu } from "lucide-react";
 import { ThemeToggle } from "@/components/shared/theme-toggle";
+import { LogoIcon } from "@/components/shared/logo-icon";
 
 interface MobileNavProps {
   onMenuClick: () => void;
@@ -21,7 +22,7 @@ export function MobileNav({ onMenuClick }: MobileNavProps) {
 
       {/* Center: Logo */}
       <div className="flex items-center gap-2">
-        <Shield className="h-4 w-4 text-[var(--text-primary)]" strokeWidth={2} />
+        <LogoIcon className="w-4 h-4 flex-shrink-0" />
         <span className="text-base font-semibold text-[var(--text-primary)]">
           UptimeGuard
         </span>
